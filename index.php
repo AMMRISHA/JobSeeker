@@ -9,7 +9,7 @@ $query = mysqli_query($conn, "select * from job_cetagory");
 <html lang="en">
 
 <head>
-  <title>JobPortal - Free Bootstrap 4 Template by Colorlib</title>
+  <title>JobSeeker: Online Job portal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
