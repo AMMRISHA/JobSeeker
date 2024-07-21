@@ -30,6 +30,12 @@ if (mysqli_num_rows($query) > 0) {
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="../admin/Interview.php">
+                <span data-feather="layers"></span>
+                Interview
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="jobcreate.php">
                 <span data-feather="bar-chart-2"></span>
                 Job create
