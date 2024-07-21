@@ -12,15 +12,11 @@ echo $email = $_GET['email'];
         echo "Exists";
         while($row =mysqli_fetch_assoc($select_can))
                                         {
-                                            echo $id=$row['id'];
                                             echo $name=$row['first_name']." ".$row['last_name'];
                                             echo $email=$row['job_seeker'];
-                                            echo $dob =$row['dob'];
-                                            echo $file = $_FILES['file']['tmp_name'];
-                                            echo $id_job = $row['id_job'];
                                             echo $p_number = $row['mobileno'];
                                             
-                                            $interview_schedule = "INSERT INTO `interview_schedule`( `Name`,`file`,`job_id`, `email`, `phone`) VALUES ('$name','$file','$id_job','$email','$p_number')";
+                                            $interview_schedule = "INSERT INTO `interview_schedule`(`interview_id`, `Name`, `email`, `phone`) VALUES ('$name','$email','$p_number')";
 
                                             $result =mysqli_query($conn , $interview_schedule);
                                             if($result)

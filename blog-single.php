@@ -219,7 +219,7 @@ include('connection/db.php');
                   </div>
 
                   <div class="form-group">
-                    <input type="submit" name="submit" id="submit" value="Apply" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" name="submit" id="submit" value="Apply" class="btn py-3 px-4 btn-primary" onclick=" validateform()" >
                   </div>
 
                 </form>
@@ -331,6 +331,41 @@ include('connection/db.php');
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script>
+
+        function validateform(){
+        var fname = document.getElementById('firstname').value;
+        var lname = document.getElementById('lastname').value;
+
+        var mobile = document.getElementById('mob').value;
+        var file = document.getElementsById('file').value;
+                if(fname == null || fname =="" || lname == null || lname =="")
+                {
+                    alert("Name cannot be blank!!");
+                    return false;
+                }
+                
+                
+                if(mobile=="" || mobile == null)
+                {
+                    alert("please enter the mobile number!!"); 
+                    return false;
+                }
+                else
+                {
+                    if(mobile.length >10 || mobile.length <10)
+                    {
+                         alert("Mobile number should be 10 digit!!");
+                         return false;
+                    }
+                }
+
+                if(file==" " || file == null)
+                {
+                  alert("File cannot be blank");
+                }
+        }
+</script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>

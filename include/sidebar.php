@@ -30,7 +30,7 @@ if (mysqli_num_rows($query) > 0) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../admin/Interview.php">
+              <a class="nav-link" href="../admin/show_interview_list.php">
                 <span data-feather="layers"></span>
                 Interview
               </a>

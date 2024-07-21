@@ -69,6 +69,7 @@ try {
 
     $mail->send();
     echo '<h1>Message has been sent</h1>';
+    header('Location:Interview.php?email=' .$to );
     // include('connection/db.php');
     
 
