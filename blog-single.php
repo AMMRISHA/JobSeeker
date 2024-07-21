@@ -16,7 +16,7 @@ if(isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>JobPortal - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Jobseeker : Online job portal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -59,7 +59,7 @@ if(isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) {
 	          <!-- <li class="nav-item cta mr-md-2"><a href="new-post.php" class="nav-link">Post a Job</a></li>
 	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Want a Job</a></li> -->
             <?php
-          session_start();
+          
           if (isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) { ?>
 
             <li class="nav-item cta mr-md-2"><a href="profile.php"
