@@ -54,15 +54,25 @@ $query = mysqli_query($conn, "select * from job_cetagory");
           <?php
           session_start();
           if (isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) { ?>
-
-            <li class="nav-item cta mr-md-2"><a href="profile.php"
-                class="nav-link"><?php echo $_SESSION['emailaddress']; ?></a></li>
-
-            <li class="nav-item cta mr-md-2"><a href="logout.php" class="nav-link">logout</a></li>
+          <li class="nav-item">
+              <div class="dropdown m-2" >
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="view-profile.php" ><?php echo $_SESSION['emailaddress']; ?></a>
+                  <a class="dropdown-item" href="profile.php">Update</a>
+                  <a class="dropdown-item" href="#">Applications</a>
+                  <a class="dropdown-item" href="logout.php" class="nav-link">logout</a>
+                </div>
+              </div>
+           
+              </li>
+            
             <?php
           } else {
             ?>
-            <li class="nav-item cta mr-md-2 cta-colored"><a href="job-post.php" class="nav-link">login</a></li>
+            <li class="nav-item cta mr-md-2 cta-colored"><a href="login.php" class="nav-link">login</a></li>
             <?php
           }
           ?>
@@ -372,46 +382,101 @@ $query = mysqli_query($conn, "select * from job_cetagory");
         <div class="col-md-7 heading-section text-center ftco-animate">
           <span class="subheading">Categories work wating for you</span>
           <h2 class="mb-4"><span>Current</span> Job Posts</h2>
+
+          <?php
+          $q= "SELECT * FROM 	all_jobs" ;
+          
+          $job_details = mysqli_query($conn , $q);
+
+          if(!$job_details){
+            die('Error:' . mysqli_error($conn));
+          }
+
+          $webDevcount =  $grapDesigncount = $mulMediacount =$adcount = $educount = $socialmediacount = $englishcount=$writingcount=$phpprocount =  $promanagercount= $financeMngcount = $ofadmincount = $cussercount = $marketingcount =$softdevcount = 0;
+          if(mysqli_num_rows($job_details)>0){
+            while($job = mysqli_fetch_assoc($job_details)){
+  
+
+              if (stripos($job['category'], 'Web Development') !== false) {
+                $webDevcount++;
+            }else if (stripos($job['category'], 'Graphic Designer') !== false) {
+              $grapDesigncount++;
+            }else if (stripos($job['category'], 'Multimedia') !== false) {
+              $mulMediacount++;
+            }
+            else if (stripos($job['category'], 'Advertising') !== false) {
+              $adcount++;
+            }else if (stripos($job['category'], 'Education') !== false) {
+              $educount++;
+            }else if (stripos($job['category'], 'Social Media') !== false) {
+              $socialmediacount++;
+            }else if (stripos($job['category'], 'English') !== false) {
+              $englishcount++;
+            }else if (stripos($job['category'], 'Writing') !== false) {
+              $writingcount++;
+            }else if (stripos($job['category'], 'PHP Programming') !== false) {
+              $phpprocount++;
+            }else if (stripos($job['category'], 'Project Management') !== false) {
+              $promanagercount++;
+            }else if (stripos($job['category'], 'Finance Management') !== false) {
+              $financeMngcount++;
+            }
+            else if (stripos($job['category'], 'Office Admin') !== false) {
+              $ofadmincount++;
+            }
+            else if (stripos($job['category'], 'Customer Service') !== false) {
+              $cussercount++;
+            }
+            else if (stripos($job['category'], 'Marketing') !== false) {
+              $marketingcount++;
+            }
+            else if (stripos($job['category'], 'Software Development') !== false) {
+              $softdevcount++;
+            }
+
+
+          }
+        }
+          ?>
         </div>
       </div>
       <div class="row">
         <div class="col-md-3 ftco-animate">
           <ul class="category">
-            <li><a href="#">Web Development <span class="number" data-number="1000">0</span></a></li>
-            <li><a href="#">Graphic Designer <span class="number" data-number="1000">0</span></a></li>
-            <li><a href="#">Multimedia <span class="number" data-number="2000">0</span></a></li>
-            <li><a href="#">Advertising <span class="number" data-number="900">0</span></a></li>
+
+            <li><a href="#">Web Development <span class="number"><?php echo $webDevcount ?></span></a></li>
+            <li><a href="#">Graphic Designer <span class="number" ><?php  echo $grapDesigncount ?></span></a></li>
+            <li><a href="#">Multimedia <span class="number"><?php echo $mulMediacount  ?></span></a></li>
+            <li><a href="#">Advertising <span class="number"> <?php echo $adcount  ?></span></a></li>
           </ul>
         </div>
         <div class="col-md-3 ftco-animate">
           <ul class="category">
-            <li><a href="#">Education &amp; Training <span class="number" data-number="3500">0</span></a></li>
-            <li><a href="#">English <span class="number" data-number="1560">0</span></a></li>
-            <li><a href="#">Social Media <span class="number" data-number="1000">0</span></a></li>
-            <li><a href="#">Writing <span class="number" data-number="2500">0</span></a></li>
+            <li><a href="#">Education &amp; Training <span class="number" ><?php echo  $educount  ?></span></a></li>
+            <li><a href="#">English <span class="number"> <?php echo  $englishcount ?> </span></a></li>
+            <li><a href="#">Social Media <span class="number"><?php echo $socialmediacount  ?></span></a></li>
+            <li><a href="#">Writing <span class="number"><?php echo  $writingcount ?></span></a></li>
           </ul>
         </div>
         <div class="col-md-3 ftco-animate">
           <ul class="category">
-            <li><a href="#">PHP Programming <span class="number" data-number="5500">0</span></a></li>
-            <li><a href="#">Project Management <span class="number" data-number="2000">0</span></a></li>
-            <li><a href="#">Finance Management <span class="number" data-number="800">0</span></a></li>
-            <li><a href="#">Office &amp; Admin <span class="number" data-number="7000">0</span></a></li>
+            <li><a href="#">PHP Programming <span class="number" ><?php echo $phpprocount ?></span></a></li>
+            <li><a href="#">Project Management <span class="number"><?php echo $promanagercount ?></span></a></li>
+            <li><a href="#">Finance Management <span class="number"><?php echo $financeMngcount ?></span></a></li>
+            <li><a href="#">Office &amp; Admin <span class="number"><?php echo $ofadmincount ?></span></a></li>
           </ul>
         </div>
         <div class="col-md-3 ftco-animate">
           <ul class="category">
-            <li><a href="#">Web Designer <span><span class="number" data-number="8000">0</span></span></a></li>
-            <li><a href="#">Customer Service <span class="number" data-number="4000">0</span></a></li>
-            <li><a href="#">Marketing &amp; Sales <span class="number" data-number="3300">0</span></a></li>
-            <li><a href="#">Software Development <span class="number" data-number="1356">0</span></a></li>
+            <li><a href="#">Web Designer <span><span class="number"><?php echo $webDevcount ?></span></span></a></li>
+            <li><a href="#">Customer Service <span class="number" ><?php echo $cussercount ?></span></a></li>
+            <li><a href="#">Marketing &amp; Sales <span class="number" ><?php echo  $marketingcount ?></span></a></li>
+            <li><a href="#">Software Development <span class="number" ><?php echo $softdevcount ?></span></a></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
-
-
 
   <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);"
     data-stellar-background-ratio="0.5">
@@ -630,6 +695,8 @@ $query = mysqli_query($conn, "select * from job_cetagory");
           </div>
         </div>
       </div>
+<!-- 
+      <a href="admin/dashboard.php">dashbord</a> -->
       <div class="row">
         <div class="col-md-12 text-center">
 

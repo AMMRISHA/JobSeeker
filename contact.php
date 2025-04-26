@@ -26,15 +26,7 @@ include('include/heading.php')
           <div class="col-md-3">
             <p><span>Address:</span>Kalynai , Nadia , West bengal B block</p>
           </div>
-          <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">8967689621</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">jobsearch@gmail.com</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Website</span> <a href="#">Jobsearch.com</a></p>
-          </div>
+         
         </div>
         <div class="row block-9">
           <div class="col-md-6 order-md-last d-flex">

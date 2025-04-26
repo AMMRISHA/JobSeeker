@@ -24,8 +24,8 @@ if (isset($_POST['submit'])) {
         $query = mysqli_query($conn, "insert into job_apply(first_name,last_name,dob,file,id_job,job_seeker,mobileno)values
     ('$firstname' ,'$lastname','$dob','$file','$id_job','$job_seeker','$mob')");
         if ($query) {
-            echo "<h2 style='color:green' >Your request has been successully send !!please wait update will send your email</h2>";
-            // header('location: calhost/jobportalweb/index.php');
+            echo "<h2 style='color:green'>Your request has been successfully sent! Please wait, updates will be sent to your email.</h2>";
+            echo "<a href='index.php' style='color:blue; text-decoration:underline;'>Go to Home</a>";
         } else {
             echo "<h2 style='color:red' >Your request can't send !!please check</h2>";
 

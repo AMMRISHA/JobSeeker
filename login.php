@@ -8,7 +8,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login and sin in</title>
+  <title>login</title>
   <link rel="stylesheet" href="login.css">
 </head>
 
@@ -16,11 +16,11 @@ session_start();
   <div class="main">
     <div class="box">
       <h3>Login </h3><br><br><br>
-      <form action="job-post.php" method="post" name="login" id="login">
+      <form action="login.php" method="post" name="login" id="login">
         <input type="email" name="email" id="email" placeholder=" Email">
         <input type="password" name="password" id="password" placeholder="Password"><br>
 
-        <button class="sininbtn" type="submit" name="submit" id="submit"> Sin-in </button><br><br>
+        <button class="sininbtn" type="submit" name="submit" id="submit"> Login </button><br><br>
         <a href="sinup.php" >Create account or sign up</a> <a href="">forgot password ?</a>
 
       </form>

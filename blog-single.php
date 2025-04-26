@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) {
 
 }else{
-  header('location:job-post.php');
+  header('location:login.php');
 }
 
 
@@ -57,7 +57,7 @@ if(isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) {
 	          <li class="nav-item"><a href="blog.php" class="nav-link">Blog</a></li>
 	          <li class="nav-item active"><a href="contact.php" class="nav-link">Contact</a></li>
 	          <!-- <li class="nav-item cta mr-md-2"><a href="new-post.php" class="nav-link">Post a Job</a></li>
-	          <li class="nav-item cta cta-colored"><a href="job-post.php" class="nav-link">Want a Job</a></li> -->
+	          <li class="nav-item cta cta-colored"><a href="login.php" class="nav-link">Want a Job</a></li> -->
             <?php
           
           if (isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) { ?>
@@ -69,7 +69,7 @@ if(isset($_SESSION['emailaddress']) && $_SESSION['emailaddress'] == true) {
             <?php
           } else {
             ?>
-            <li class="nav-item cta mr-md-2 cta-colored"><a href="job-post.php" class="nav-link">login</a></li>
+            <li class="nav-item cta mr-md-2 cta-colored"><a href="login.php" class="nav-link">login</a></li>
             <?php
           }
           ?>
@@ -117,8 +117,10 @@ include('connection/db.php');
           <div class="col-md-6 ftco-animate">
             <h2 class="mb-3 text-success">Job Title :- <?php echo $job_title?></h2>
             <h6 class="text-weight">Location:-<?php echo $country?> ,<?php echo $state?>,<?php echo $city?></h6>
-            <h4 class="mb-3">Job description :- <?php echo $job_description?></h4>
-            
+            <?php
+            if($job_description != NULL || $job_description == " " ) 
+           "<h4 class='mb-3'>Job description :- $job_description </h4>";
+          ?>
             <p>
               <img src="images/details.jpg" alt="" class="img-fluid">
             </p>
@@ -169,9 +171,10 @@ include('connection/db.php');
 include('connection/db.php');
   $id = $_GET['id'];
   // echo "<script>alert($id)</script>";
-  $query = mysqli_query($conn,"select * from jobseeker where id='$id' ");
+ echo  $email = $_SESSION['emailaddress'];
+  $query = mysqli_query($conn,"SELECT * FROM jobseeker WHERE email='$email'");
   while($row=mysqli_fetch_array($query)){
-    $firstname=$row['firstname'];
+     $firstname=$row['firstname'];
     $lastname=$row['lastname'];
     $mobileno=$row['mobileno'];
     $DOB=$row['DOB'];
